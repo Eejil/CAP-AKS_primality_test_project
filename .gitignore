@@ -1,0 +1,11 @@
+# Ignore the following folders
+/.lake
+
+# Ignore the following file format
+*.olean
+*.bak
+
+# Ignore the following files
+
+
+
