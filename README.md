@@ -3,7 +3,7 @@
 
 Project done as partial requirement of the Project Assisted Proof course at VU Amsterdam, Spring 2024.
 
-### Group member
+### Group members
 - Luciano Baldassi
 - Justus de Bruijn Kops
 - Mark Lapidus
@@ -12,7 +12,7 @@ Project done as partial requirement of the Project Assisted Proof course at VU A
 - Tristan Vermeulen
 
 ### Link to the Overleaf report (read only)
-https://www.overleaf.com/read/qdnkgqswvfsr#e805ce
+<https://www.overleaf.com/read/qdnkgqswvfsr#e805ce>
 
 
 
