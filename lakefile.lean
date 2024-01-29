@@ -1,17 +1,14 @@
 import Lake
 open Lake DSL
 
-package «CAP-AKS_primality_test_project» where
-  -- Settings applied to both builds and interactive editing
+package mil where
   leanOptions := #[
     ⟨`pp.unicode.fun, true⟩, -- pretty-prints `fun a ↦ b`
-    ⟨`pp.proofs.withType, false⟩
-  ]
-  -- add any additional package configuration options here
-
-require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git"
+    ⟨`autoImplicit, false⟩,
+    ⟨`relaxedAutoImplicit, false⟩]
 
 @[default_target]
-lean_lib «CAPAKSPrimalityTestProject» where
-  -- add any library configuration options here
+lean_lib MIL where
+
+require mathlib from git "https://github.com/leanprover-community/mathlib4"@"master"
+
