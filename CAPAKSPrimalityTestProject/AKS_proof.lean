@@ -23,15 +23,11 @@ The backward direction is still incomplete.
 theorem childBinomial (n : ℕ)(a : ZMod n) (two_le_n: 2≤n):
 -- example (n : ℕ)(a : ZMod n) (two_le_n: 2≤n):
   Nat.Prime n ↔ (X + C a)^n = (X^n + C a) := by
-  -- First, let's break up the bi-implication
-  -- into the two directions
+  -- First, let's break up the bi-implication into the two directions
   constructor
-
   -- we start withthe left-to-right direction
   case mp => -- **Nat.Prime n → (X + C a)^n = (X^n + C a)**
-    -- This direction was solved in this way by Anne
     intro hn -- Assume n is prime
-
     -- We need to convert proposition hn to a fact:
     have : Fact (Nat.Prime n) := Fact.mk hn
 
@@ -50,27 +46,19 @@ theorem childBinomial (n : ℕ)(a : ZMod n) (two_le_n: 2≤n):
     -- To avoid notational clutter, we define p to be this prime
     let p := Nat.minFac n
 
-    -- Now we want to start talking about combinatorics ...
-    -- We could use Nat.choose_eq_factorial_div_factorial
-    -- It contains the definition of (n choose k) as we know it
-    push_neg
-    -- apply?
-    -- apply add_pow_char (X : (ZMod n)[X]) _
-
-
     rw [add_pow]
     rw [Finset.sum_congr rfl]
     swap
     intros x hx
-    /-**goal 1**-/
+    /-subgoal 1-/
     show _ = X ^ x * C a ^ (n - x) * ↑(Nat.factorial n / (Nat.factorial x * Nat.factorial (n - x)))
 
-    /-**goal 2**-/
+    /-subgoal 2-/
     rw [Nat.choose_eq_factorial_div_factorial]
     apply Finset.mem_range.mp at hx
     exact Nat.lt_succ.mp hx
 
-    /-**goal 3**-/
+    /-subgoal 3-/
     rw [←Finset.sum_range_add_sum_Ico _ n.le_succ ]
     simp
     rw [←Finset.sum_range_add_sum_Ico _ (Nat.le_trans one_le_two two_le_n) ]
@@ -88,8 +76,7 @@ theorem childBinomial (n : ℕ)(a : ZMod n) (two_le_n: 2≤n):
 
 
 /-
-Here, we attemps to prove the **main theorem of the AKS algorithm**, that is
-that
+Here, we attemps to prove the **main theorem of the AKS algorithm**; that is, we prove the following:
 For given integer n ≥ 2, let r be a positive integer < n, for which n has order > (log n)^2 modulo r.
 If n is not a prime power and does not have any prime factor ≤ r
 then
@@ -102,7 +89,7 @@ We successfully prove the forward direction.
 The backward direction is still incomplete.
 -/
 
--- We define the property of an integer to not be a perfect power.
+-- We first define the property of an integer to not be a perfect power.
 def notPerfectPow (n : ℕ) : Prop :=
 ¬∃ (a b : ℕ), (a > 1)  ∧  (b > 1) ∧ (a^b = n)
 -- #check notPerfectPow
@@ -147,7 +134,6 @@ theorem AKS
 
   rw [Ideal.span_insert]
 
-  have h1 : p ∣ n := by sorry --apply nNotP
-  -- apply (Ideal.span_singleton_le_span_singleton h1).mpr
+  have h1 : p ∣ n := by sorry
 
   sorry
