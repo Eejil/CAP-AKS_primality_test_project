@@ -12,7 +12,7 @@ open Polynomial
 
 
 /-
-We first attempt to prove **Child's Binomial Theoremn**
+We first attempt to prove **Modified Child's Binomial Theoremn**
 Let n an integer greater and equal than twon then
   n is prime if and only if
     (X + C a)^n ≡ (X^n + C a) mod n.
