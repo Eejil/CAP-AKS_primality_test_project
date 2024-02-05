@@ -94,6 +94,25 @@ def notPerfectPow (n : ℕ) : Prop :=
 ¬∃ (a b : ℕ), (a > 1)  ∧  (b > 1) ∧ (a^b = n)
 -- #check notPerfectPow
 
+
+-- Definition of group H and irreducible polynomial h(x)
+
+variable (A r n : ℕ)
+[Fact $ Nat.Prime n]
+
+def I : Ideal (ZMod n)[X] :=
+  Ideal.span {X^r - 1, C ↑n}
+def xSet : Set ((ZMod n)[X] ⧸ (I r n)) :=   ------------------Set of x+1, x+2,...,x+A
+  {P | ∃ (a : ℕ), 0 ≤ a ∧ a ≤ A ∧ P = Ideal.Quotient.mk (I r n) (X + C (a : ZMod n)) }
+
+def HSet : (Set ((ZMod n)[X] ⧸ I r n)) := --------------------------------Set H
+ {x | x ∈ Submonoid.closure (xSet A r n)}
+
+noncomputable def h_i_ : (ZMod n)[X] :=
+  Polynomial.factor ((X^r - 1) : (ZMod n)[X])
+  --(h_irr : Irreducible h_i)
+
+
 theorem AKS
     (n m r: ℕ) (d : ℤ)
 
