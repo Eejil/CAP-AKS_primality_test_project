@@ -114,26 +114,24 @@ theorem AKS
   case mp => -- **Show: Nat.Prime n → (X + C ↑a)^n - (X^n + C a) ∈ I**
     rintro hn a ha
     have h₁ : (X + C (a : ZMod n))^n - (X^n + C (a : ZMod n)) ∈ Ideal.span {C ↑↑n} := by
-      rw [Ideal.mem_span_singleton]
-
       have : Fact (Nat.Prime n) := Fact.mk hn
       rw [(childBinomial _ _ nGT1).mp hn, sub_self];
-      exact AdjoinRoot.mk_eq_zero.mp rfl
-
+      exact Ideal.zero_mem _
     rw [h]
     rw [Ideal.span_insert]
     apply Ideal.mem_sup_right
     exact h₁
 
   case mpr => -- **Show: (X + C ↑a)^n - (X^n + C a) ∈ I → Nat.Prime n**
-  rw [h]
-  contrapose
-  rintro nNotP
-  apply (Nat.not_prime_iff_minFac_lt _).mp at nNotP
-  let p := Nat.minFac n
+    rw [h]
+    contrapose
+    rintro nNotP
+    apply (Nat.not_prime_iff_minFac_lt _).mp at nNotP
+    let p := Nat.minFac n
 
-  rw [Ideal.span_insert]
+    rw [Ideal.span_insert]
 
-  have h1 : p ∣ n := by sorry
+    have h1 : p ∣ n := by sorry
 
-  sorry
+    sorry
+end
